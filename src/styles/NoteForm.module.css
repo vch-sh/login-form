@@ -1,0 +1,37 @@
+.form input {
+	font-family: 'Share Tech Mono', monospace;
+	font-size: 30px;
+	letter-spacing: 2px;
+	/* max-width: 550px; */
+	width: 100%;
+	margin: 5px;
+	padding: 10px;
+	background: transparent;
+	color: white;
+	border: none;
+	border-bottom: 2px solid rgba(245, 245, 245, 0.71);
+	outline: none;
+	transition: .3s;
+}
+
+.form input:focus {
+	border-bottom: 2px solid #77aaff;
+	background-color: rgba(245, 245, 245, 0.164);
+	border-radius: 10px;
+}
+
+.form p {
+	font-style: italic;
+	font-size: 22px;
+	opacity: 0.5;
+}
+
+.form button {
+	padding: 8px 10px;
+	border-color: white;
+	font-size: 20px;
+}
+
+.form button:hover {
+	border-color: transparent;
+}

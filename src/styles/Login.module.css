@@ -1,0 +1,63 @@
+.loginContainer {
+	min-height: 500px;
+	margin-top: 15%;
+	padding: 45px 0;
+	background-color: rgba(0, 0, 0, 0.292);
+	color: whitesmoke;
+	border: none;
+	border-radius: 10px;
+}
+
+.title {
+	font-size: 70px;
+	color: #fff;
+	margin-bottom: 50px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+.input {
+	font-family: 'Share Tech Mono', monospace;
+	font-size: 30px;
+	letter-spacing: 2px;
+	width: 450px;
+	margin: 5px;
+	padding: 10px;
+	background: transparent;
+	color: white;
+	border: none;
+	border-bottom: 2px solid rgba(245, 245, 245, 0.71);
+	outline: none;
+	transition: .3s;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+}
+
+.input:focus {
+	border-bottom: 2px solid #77aaff;
+	background-color: rgba(0, 0, 0, 0.137);
+	border-radius: 10px;
+}
+
+.input::placeholder {
+	color: #000;
+	opacity: 0.6;
+	font-style: italic;
+}
+
+.input:focus::placeholder {
+	text-align: right;
+}
+
+.checkMark {
+	margin-right: 5px;
+	color: #55ff55;
+}

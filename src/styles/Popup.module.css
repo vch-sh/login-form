@@ -1,0 +1,10 @@
+.popup {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-size: 22px;
+	text-align: center;
+	width: 450px;
+	margin: 0 auto;
+	padding: 5px;
+	background-color: rgba(0, 0, 0, 0.137);
+	border-radius: 10px;
+}
