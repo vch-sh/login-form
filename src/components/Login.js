@@ -41,19 +41,11 @@ function Login() {
 	}
 
 	function usernameFocusHandler() {
-		setIsUsernamePopupVisible(true);
-	}
-
-	function usernameBlurHandler() {
-		setIsUsernamePopupVisible(false);
+		setIsUsernamePopupVisible(!isUsernamePopupVisible);
 	}
 
 	function passwordFocusHandler() {
-		setIsPasswordPopupVisible(true);
-	}
-
-	function passwordBlurHandler() {
-		setIsPasswordPopupVisible(false);
+		setIsPasswordPopupVisible(!isPasswordPopupVisible);
 	}
 
 	function checkMainRegex(regex, name) {
@@ -66,44 +58,62 @@ function Login() {
 
 	return (
 		<div className={styles.loginContainer}>
+
 			<h1 className={styles.title}>Login</h1>
 
 			{(isValid.username.main && isValid.password.main) ? 
-			<Modal username={username} setUsername={setUsername} setPassword={setPassword} /> 
+			<Modal 
+				username={username} 
+				setUsername={setUsername} 
+				setPassword={setPassword} 
+			/> 
 			: 
 			(<div className={styles.button}>
-					<Button isUsernameValid={isValid.username.main} isPasswordValid={isValid.password.main}>
+					<Button 
+						isUsernameValid={isValid.username.main} 
+						isPasswordValid={isValid.password.main}
+					>
 						Log in
 					</Button>
 				</div> 
 			)}
 
-			<form className={styles.form} onSubmit={handleFormSubmit}>
+			<form 
+				className={styles.form} 
+				onSubmit={handleFormSubmit}
+			>
 				<label>
-						<input
-							className={styles.input}
-							placeholder='username' 
-							value={username} 
-							onChange={(event) => setUsername(event.target.value)} 
-							onFocus={usernameFocusHandler} 
-							onBlur={usernameBlurHandler}
-						/>
+					<input
+						className={styles.input}
+						placeholder='username' 
+						value={username} 
+						onChange={(event) => setUsername(event.target.value)} 
+						onFocus={usernameFocusHandler} 
+						onBlur={usernameFocusHandler}
+					/>
 				</label>
+
 				{isUsernamePopupVisible && 
 					<Popup>
 						<div>
 							{ username.length >= 5 && <AiOutlineCheck className={styles.checkMark} /> } 
 							5+ characters ({username.length})
 						</div>
-							<div>
-								{ !!(isValid.username.lettersCounter && isValid.username.digitsCounter) && <AiOutlineCheck className={styles.checkMark} /> } 
-								Letters ({isValid.username.lettersCounter})
-								and 
-								digits ({isValid.username.digitsCounter})
-								only
-							</div> 
+
+						<div>
+							{ 
+								!!(isValid.username.lettersCounter && isValid.username.digitsCounter) 
+								&& 
+								<AiOutlineCheck className={styles.checkMark} /> 
+							} 
+							Letters ({isValid.username.lettersCounter})
+							and 
+							digits ({isValid.username.digitsCounter})
+							only
+						</div> 
 					</Popup>
 				}
+
 				<label>
 					<input 
 						className={styles.input}
@@ -111,30 +121,40 @@ function Login() {
 						value={password} 
 						onChange={(event) => setPassword(event.target.value)}
 						onFocus={passwordFocusHandler} 
-						onBlur={passwordBlurHandler}
+						onBlur={passwordFocusHandler}
 					/>
 				</label>
+
 				{isPasswordPopupVisible && 
 					<Popup>
 						<div>
 							{ password.length >= 8 && <AiOutlineCheck className={styles.checkMark} /> } 
 							8+ characters ({password.length})
 						</div>
+
 						<div>
-							{ !!(isValid.password.lettersCounter && isValid.password.digitsCounter) && <AiOutlineCheck className={styles.checkMark} /> }
+							{ 
+								!!(isValid.password.lettersCounter && isValid.password.digitsCounter) 
+								&& 
+								<AiOutlineCheck className={styles.checkMark} /> 
+							}
 							Letters ({isValid.password.lettersCounter})
 							and 
 							digits ({isValid.password.digitsCounter})
 						</div> 
+
 						<div>
 							<div>
-							{ !!isValid.password.symbols && <AiOutlineCheck className={styles.checkMark} /> }
-								Symbols ({isValid.password.symbols}): {symbols} 
+								{ 
+									!!isValid.password.symbols 
+									&& 
+									<AiOutlineCheck className={styles.checkMark} /> 
+								}
+									Symbols ({isValid.password.symbols}): {symbols} 
 							</div>
 						</div>
 					</Popup>
 				}
-				
 			</form>
 		</div>
 	)

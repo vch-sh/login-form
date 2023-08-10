@@ -18,7 +18,9 @@ function Modal( {username, setUsername, setPassword} ) {
 	}
 
 	function addNote(text) {
-		setNotes([...notes, text])
+		if (text.trim().length) {
+			setNotes([...notes, text]);
+		}
 	}
 
 	function deleteNote(index) {
@@ -28,15 +30,30 @@ function Modal( {username, setUsername, setPassword} ) {
 	return (
 		<>
 			<button onClick={toggleModal}>Log in</button>
+
 			{modal && (
 				<div className={styles.modal && styles.animation}>
-					<div className={styles.overlay} onClick={toggleModal && eraseInputData}></div>
+
+					<div 
+						className={styles.overlay} 
+						onClick={toggleModal && eraseInputData}>
+					</div>
+
 					<div className={styles.modalContent}>
 						<FaRegUserCircle className={styles.icon}/>
 						<p>User "<span>{username}</span>" succesfully logged in</p>
 						<NoteForm addNote={addNote} />
-						<NoteList notes={notes} deleteNote={deleteNote} />
-					<button className={styles.closeModal} onClick={toggleModal && eraseInputData}>Log out</button>
+						<NoteList 
+							notes={notes} 
+							deleteNote={deleteNote} 
+						/>
+
+						<button 
+							className={styles.closeModal} 
+							onClick={toggleModal && eraseInputData}>
+								Log out
+						</button>
+
 					</div>
 				</div>
 			)}

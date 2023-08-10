@@ -4,10 +4,9 @@ import styles from '../../styles/Button.module.css';
 function Button( {children, isUsernameValid, isPasswordValid} ) {
 	const [shake, setShake] = useState(false);
 
-	const handleClick = () => {{
-			!(isUsernameValid && isPasswordValid) && setShake(true);
-			setTimeout(() => setShake(false), 1000)
-		}
+	const handleClick = () => {
+		!(isUsernameValid && isPasswordValid) && setShake(true);
+		setTimeout(() => setShake(false), 1000)
 	}
 
 	return (
