@@ -1,6 +1,6 @@
 {
   "name": "template",
-  "homepage": "https://vch_sh.github.io/login-form",
+  "homepage": "https://vch-sh.github.io/login-form",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
