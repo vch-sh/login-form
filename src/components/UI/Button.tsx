@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import styles from '../../styles/Button.module.css';
 
-function Button( {children, isUsernameValid, isPasswordValid} ) {
+interface ButtonProps {
+	children: React.ReactNode,
+	isUsernameValid: boolean,
+	isPasswordValid: boolean,
+}
+
+function Button( {children, isUsernameValid, isPasswordValid}: ButtonProps ) {
 	const [shake, setShake] = useState(false);
 
 	const handleClick = () => {
@@ -12,7 +18,7 @@ function Button( {children, isUsernameValid, isPasswordValid} ) {
 	return (
 		<div className={styles.button}>
 			<button 
-				onClick={handleClick} className={shake ? styles.shakeHorizontal : null}>
+				onClick={handleClick} className={shake ? styles.shakeHorizontal : undefined}>
 				{children}
 			</button>
 		</div>

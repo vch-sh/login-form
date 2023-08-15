@@ -36,7 +36,7 @@ function Login() {
 		}
 	}
 
-	function handleFormSubmit(event) {
+	const handleFormSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
 		event.preventDefault();
 	}
 
@@ -48,12 +48,13 @@ function Login() {
 		setIsPasswordPopupVisible(!isPasswordPopupVisible);
 	}
 
-	function checkMainRegex(regex, name) {
-		return regex.test(name)
+	function checkMainRegex(regex: RegExp, name: string): boolean {
+		return regex.test(name);
 	}
 
-	function checkRegexMatch(name, regex) {
-		return name.match(regex) ? name.match(regex).length : 0
+	function checkRegexMatch(name: string, regex: RegExp): number {
+		const matchResult = name.match(regex);
+		return matchResult ? matchResult.length : 0;
 	}
 
 	return (
@@ -115,7 +116,7 @@ function Login() {
 				}
 
 				<label>
-					<input 
+					<input
 						className={styles.input}
 						placeholder='password' 
 						value={password} 

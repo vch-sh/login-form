@@ -1,6 +1,10 @@
 import styles from '../../styles/Popup.module.css';
 
-function Popup( {children} ) {
+interface PopupProps {
+	children: React.ReactNode,
+}
+
+function Popup( {children}: PopupProps ) {
 	return (
 		<div className={styles.popup}>{children}</div>
 	)

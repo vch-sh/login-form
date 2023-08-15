@@ -4,26 +4,32 @@ import NoteForm from '../Notes/NoteForm';
 import NoteList from '../Notes/NoteList';
 import styles from '../../styles/Modal.module.css';
 
-function Modal( {username, setUsername, setPassword} ) {
+interface ModalProps {
+	username: string,
+	setUsername: React.Dispatch<React.SetStateAction<string>>,
+	setPassword: React.Dispatch<React.SetStateAction<string>>,
+}
+
+function Modal( {username, setUsername, setPassword}: ModalProps ) {
 	const [modal, setModal] = useState(false);
-	const [notes, setNotes] = useState([]);
+	const [notes, setNotes] = useState<string[]>([]);
 
 	function toggleModal() {
 		setModal(!modal)
 	}
 
-		function eraseInputData() {
+	function eraseInputData() {
 		setUsername('');
 		setPassword('');
 	}
 
-	function addNote(text) {
+	function addNote(text: string) {
 		if (text.trim().length) {
 			setNotes([...notes, text]);
 		}
 	}
 
-	function deleteNote(index) {
+	function deleteNote(index: number) {
 		setNotes(notes.filter((_, i) => i !== index))
 	}
 	
@@ -36,8 +42,11 @@ function Modal( {username, setUsername, setPassword} ) {
 
 					<div 
 						className={styles.overlay} 
-						onClick={toggleModal && eraseInputData}>
-					</div>
+						onClick={() => {
+							toggleModal(); 
+							eraseInputData();
+						}}
+					></div>
 
 					<div className={styles.modalContent}>
 						<FaRegUserCircle className={styles.icon}/>
@@ -50,7 +59,11 @@ function Modal( {username, setUsername, setPassword} ) {
 
 						<button 
 							className={styles.closeModal} 
-							onClick={toggleModal && eraseInputData}>
+							onClick={() => {
+								toggleModal(); 
+								eraseInputData();
+							}}
+							>
 								Log out
 						</button>
 
